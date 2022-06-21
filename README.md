@@ -4,7 +4,6 @@ React project example
 
 ## Stack
 
-
 * Create React App
 * Eslint Airbnb
 * Prettier
