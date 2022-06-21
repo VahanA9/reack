@@ -30,10 +30,10 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: lifespan
           IMAGE_TAG: ${{ github.sha }}
-        run: |
-          docker build -t meteor .
-          docker tag meteor:latest 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
-          docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
-          
+        run: 
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG|
+          docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$SOURCE_TAG
+
           # docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           # docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
