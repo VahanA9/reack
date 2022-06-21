@@ -27,10 +27,10 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
 
       - name: Build, tag, and push image to Amazon ECR
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: lifespan
-          IMAGE_TAG: ${{ github.sha }}
+        # env:
+        #   ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        #   ECR_REPOSITORY: lifespan
+        #   IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t lifespan .
           docker tag lifespan:$SOURCE_TAG 353918212181.dkr.ecr.us-west-1.amazonaws.com/lifespan:$SOURCE_TAG
