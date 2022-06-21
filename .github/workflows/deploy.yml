@@ -35,4 +35,4 @@ jobs:
         run: |
           docker build -t meteor .
           docker tag meteor:latest 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
-          docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
+          docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$IMAGE_TAG
