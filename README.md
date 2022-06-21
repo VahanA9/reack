@@ -1,6 +1,6 @@
 # react-project-example
 
-React project example 
+React project example
 
 ## Stack
 
