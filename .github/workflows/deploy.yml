@@ -1,7 +1,7 @@
 ---
 name: Build and Push Golang Image to AWS ECR
 on:
-  push:
+  push: 
     branches: [ main ]
 jobs:
   build-and-push:
