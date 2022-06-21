@@ -19,7 +19,7 @@ jobs:
           aws-region: us-west-1
 
       - name: Get the version
-        run: echo :set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}    
+        run: echo :set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -31,6 +31,6 @@ jobs:
           ECR_REPOSITORY: lifespan
           IMAGE_TAG: ${{ github.sha }}
         run: |
-         docker build -t meteor .
-         docker tag meteor:latest 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
-         docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
+          docker build -t meteor .
+          docker tag meteor:latest 353918212181.dkr.ecr.us-west-1.amazonaws.com/lifespan:$SOURCE_TAG
+          docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/lifespan:$SOURCE_TAG
