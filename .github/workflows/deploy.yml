@@ -32,6 +32,7 @@ jobs:
           ECR_REPOSITORY: lifespan
           # IMAGE_TAG: ${{ github.sha }}
         run: |
+          aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 353918212181.dkr.ecr.us-west-1.amazonaws.com
           docker build -t meteor .
           docker tag meteor:latest 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
           docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
