@@ -1,4 +1,4 @@
-name: Deploy to ECR
+name: Deploy to AWS ECR
 
 on:
   push:
@@ -27,9 +27,6 @@ jobs:
         with:
           # Optionally strip `v` prefix
           strip_v: true
-      # - name: Use tag
-      #   run: echo ${{steps.tag.outputs.tag}}
-
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
