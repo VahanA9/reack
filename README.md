@@ -1,8 +1,6 @@
 # react-project-example
 
 React project example
-
-
 ## Stack
 
 * Create React App
