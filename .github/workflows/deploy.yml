@@ -1,12 +1,11 @@
 on:
   push:
     tags:
-      - rc* 
+      - rc-* 
 
 jobs:
   build:
     name: Build an image
-
     runs-on: ubuntu-latest
 
     steps:
@@ -20,12 +19,15 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-west-1
 
-    - name: Get the version
-      run: echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build image and push to registry
+    - name: Build, tag, and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: lifespan
+        IMAGE_TAG: ${{ github.sha }}
       run: |
-        aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 353918212181.dkr.ecr.us-west-1.amazonaws.com
-        docker build -t meteor .
-        docker tag meteor:latest 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
-        docker push 353918212181.dkr.ecr.us-west-1.amazonaws.com/meteor:$SOURCE_TAG
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG    
