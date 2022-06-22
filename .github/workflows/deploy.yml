@@ -27,8 +27,8 @@ jobs:
         with:
           # Optionally strip `v` prefix
           strip_v: true
-      - name: Use tag
-        run: echo ${{steps.tag.outputs.tag}}
+      # - name: Use tag
+      #   run: echo ${{steps.tag.outputs.tag}}
 
       - name: Login to Amazon ECR
         id: login-ecr
