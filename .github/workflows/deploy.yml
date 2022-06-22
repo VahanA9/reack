@@ -1,3 +1,5 @@
+name: Deploy to ECR
+
 on:
   push:
     tags:
@@ -30,7 +32,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: lifespan
-          IMAGE_TAG: ${{ github.sha }}
+          IMAGE_TAG: $IMAGE_TAG
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
