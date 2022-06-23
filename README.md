@@ -26,5 +26,3 @@ yarn
 ```shell
 yarn start
 ```
-
-
