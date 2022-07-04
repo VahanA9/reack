@@ -12,8 +12,9 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
-      - run: cd nginx  
+        uses: actions/checkout@v3
+        with:
+          path: "nginx" 
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
