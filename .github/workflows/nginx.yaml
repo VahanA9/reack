@@ -3,7 +3,7 @@ name: Build and Push NGINX Image to AWS ECR
 on:
   push:
     paths:
-      - 'src'  
+      - 'src/test/txt'  
 
 jobs:
   build:
