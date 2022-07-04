@@ -9,10 +9,16 @@ jobs:
   build:
     name: Build an image
     runs-on: ubuntu-latest
+    env:
+      working-directory: ./nginx
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+
+      - name: Directory  
+        run: ls -R
+        working-directory: ${{env.working-directory}}
 
 
       - name: Configure AWS credentials
