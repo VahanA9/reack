@@ -2,10 +2,8 @@ name: Build and Push NGINX Image to AWS ECR
 
 on:
   push:
-    branches:
-    - main
     paths:
-      - "src"
+      - src/*
 
 jobs:
   build:
