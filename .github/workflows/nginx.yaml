@@ -3,7 +3,7 @@ name: Build and Push NGINX Image to AWS ECR
 on:
   push:
     paths:
-      - '/nginx/nginx.conf'
+      - 'nginx/nginx.conf'
     tags-ignore:
       - rc-*
 jobs:
