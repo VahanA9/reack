@@ -4,6 +4,9 @@ on:
   push:
     paths:
       - 'nginx/nginx.conf'
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
