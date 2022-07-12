@@ -3,10 +3,7 @@ name: Build and Push NGINX Image to AWS ECR
 on:
   push:
     paths:
-      - './nginx/*'
-  pull_request:
-    branches:
-      - main
+      - './nginx/nginx.conf'
 
 jobs:
   build:
@@ -36,7 +33,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: nginx
-          IMAGE_TAG: rc-${{ steps.date.outputs.date }}
+          IMAGE_TAG: ls-${{ steps.date.outputs.date }}
         run: |
           cd nginx/
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
