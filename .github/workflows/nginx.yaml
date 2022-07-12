@@ -39,5 +39,5 @@ jobs:
           IMAGE_TAG: rc-${{ steps.date.outputs.date }}
         run: |
           cd nginx/
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker build --tag $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
