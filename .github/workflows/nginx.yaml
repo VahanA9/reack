@@ -3,10 +3,7 @@ name: Build and Push NGINX Image to AWS ECR
 on:
   push:
     paths:
-      - 'nginx/nginx.conf'
-  pull_request:
-    branches:
-      - main
+      - nginx/nginx.conf
 
 jobs:
   build:
@@ -20,8 +17,8 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_CI_CD }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_CI_CD}}
           aws-region: us-west-1
 
       - name: Get current date
