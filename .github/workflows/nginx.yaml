@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - './nginx/nginx.conf'
+    tags-ignore:
+      - rc-*  
 
 jobs:
   build:
