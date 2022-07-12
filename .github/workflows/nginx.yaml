@@ -24,20 +24,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-1
 
-      - name: Get current time
-        uses: josStorer/get-current-time@v2
-        id: current-time
-        with:
-            format: YYYYMMDD-HH
-            utcOffset: "+08:00"
-      - name: Use current time
-        env:
-          TIME: "${{ steps.current-time.outputs.time }}"
-          R_TIME: "${{ steps.current-time.outputs.readableTime }}"
-          F_TIME: "${{ steps.current-time.outputs.formattedTime }}"
-          YEAR: "${{ steps.current-time.outputs.year }}"
-          DAY: "${{ steps.current-time.outputs.day }}"
-        run: echo $TIME $R_TIME $F_TIME $YEAR $DAY
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +"+%H:%M:%S   %d/%m/%y")"
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -47,7 +36,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: nginx
-          IMAGE_TAG: rc-${{ steps.date.outputs.current-time }}
+          IMAGE_TAG: rc-${{ steps.date.outputs.date }}
         run: |
           cd nginx/
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
