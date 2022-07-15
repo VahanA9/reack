@@ -28,5 +28,6 @@ yarn start
 ```
 
 
+## Build
 
-[![Build and Push Image to AWS ECR](https://github.com/VahanA9/reack/actions/workflows/deploy.yml/badge.svg)](https://github.com/VahanA9/reack/actions/workflows/deploy.yml)
+[![Build and Push Image to AWS ECR](https://github.com/VahanA9/reack/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/VahanA9/reack/actions/workflows/deploy.yml)
